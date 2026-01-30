@@ -1,0 +1,55 @@
+.level-wrapper {
+  max-width: 700px;
+  margin: 30px auto;
+  font-family: Arial, sans-serif;
+}
+
+.level-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.level-table th,
+.level-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.level-table th {
+  background: #f2f2f2;
+}
+
+input {
+  width: 100%;
+  padding: 4px;
+  box-sizing: border-box;
+}
+
+.actions button {
+  margin-right: 6px;
+}
+
+button {
+  padding: 4px 10px;
+  cursor: pointer;
+}
+
+.add-btn {
+  margin-top: 10px;
+}
+
+.delete {
+  background: #ffe5e5;
+}
+
+.cancel {
+  background: #eee;
+}
+
+.level-error {
+  background: #ffe5e5;
+  color: #900;
+  padding: 8px;
+  margin-bottom: 10px;
+}

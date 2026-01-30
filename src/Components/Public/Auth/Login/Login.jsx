@@ -7,30 +7,32 @@ export const Login = () => {
   const [message, setMessage] = useState('');
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    try {
-      const response = await fetch('https://localhost:7265/api/public/Auth/Login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': '*/*',
-        },
-        body: JSON.stringify({ identifier, password }),
-      });
+  try {
+    const response = await fetch('https://localhost:7265/api/public/Auth/Login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': '*/*',
+      },
+      body: JSON.stringify({ identifier, password }),
+    });
 
-      const data = await response.json();
+    const data = await response.json();
 
-      if (response.ok) {
-        setMessage('Login successful!');
-        console.log(data); // token yoki user data
-      } else {
-        setMessage(data.message || 'Login failed!');
-      }
-    } catch (error) {
-      setMessage('Error: ' + error.message);
+    if (response.ok) {
+      localStorage.setItem('accessToken', data.accessToken);
+      localStorage.setItem('refreshToken', data.refreshToken);
+
+      setMessage('Login successful!');
+    } else {
+      setMessage(data.message || 'Login failed!');
     }
-  };
+  } catch (error) {
+    setMessage('Error: ' + error.message);
+  }
+};
 
   return (
     <div className="login-container">
@@ -56,3 +58,6 @@ export const Login = () => {
     </div>
   );
 };
+
+/** Response model: public record TokenDto(string accessToken, string refreshToken);
+  Local storage ga save qilish kerak*/

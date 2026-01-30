@@ -1,14 +1,27 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Login } from './Components/Public/Auth/Login/Login';
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Login } from "./Components/Public/Auth/Login/Login";
+import { Category } from "./Components/Admin/Category/Category";
+import { ContentType } from "./Components/Admin/ContentType/ContentType";
+import { Level } from "./Components/Admin/Level/Level";
+import { Role } from "./Components/Admin/Role/Role";
+import { Status } from "./Components/Admin/Status/Status";
+import { Sidebar } from "./Components/Admin/Sidebar/Sidebar";
 
 function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login />} />
+        <Route path="/admin" element={<Sidebar/>}>
+          <Route path="category" element={<Category />} />
+          <Route path="content-type" element={<ContentType />} />
+          <Route path="level" element={<Level />} />
+          <Route path="role" element={<Role />} />
+          <Route path="status" element={<Status />} />
+        </Route>
       </Routes>
-    </Router>
+    </BrowserRouter>
   );
 }
 
