@@ -4,6 +4,11 @@ import "./Sidebar.css";
 
 export const Sidebar = () => {
   const navigate = useNavigate();
+  const handleLogout = () => {
+    localStorage.removeItem("accessToken"); // tokenni o‘chiramiz
+    navigate("/"); // login page ga qaytamiz
+  };
+
  const token = localStorage.getItem("accessToken");
 
 // Token bo'lsa decode qilish
@@ -31,6 +36,7 @@ const showSidebar = roleId === "2"; // string bilan taqqoslash
           <button onClick={() => navigate("/admin/role")}>Role</button>
           <button onClick={() => navigate("/admin/status")}>Status</button>
           <button onClick={() => navigate("/admin/content-type")}>Content Type</button>
+          <button onClick={handleLogout}>Logout</button>
         </div>
       )}
 

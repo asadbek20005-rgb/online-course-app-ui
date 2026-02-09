@@ -177,3 +177,81 @@ button:hover {
   font-weight: bold;
 }
 
+
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .courses-container {
+    padding: 0 15px;
+    margin: 30px auto;
+  }
+
+  .course-card {
+    max-width: 90%;
+    padding: 15px;
+  }
+
+  .course-card img {
+    max-width: 250px;
+  }
+}
+
+@media (max-width: 768px) {
+  .courses-container {
+    margin: 20px auto;
+    padding: 0 10px;
+  }
+
+  .course-card {
+    flex-direction: column;
+    padding: 12px;
+  }
+
+  .course-card img {
+    max-width: 200px;
+  }
+
+  .course-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .course-card p {
+    font-size: 0.95rem;
+  }
+
+  .course-card button {
+    width: 100%;
+    padding: 10px 0;
+  }
+
+  .modal-content {
+    width: 95%;
+    padding: 20px 15px;
+  }
+
+  .modal-buttons {
+    flex-direction: column;
+  }
+
+  .modal-buttons button {
+    margin: 5px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+
+  .course-card img {
+    max-width: 150px;
+  }
+
+  .course-card h3 {
+    font-size: 1rem;
+  }
+
+  .modal-content {
+    padding: 15px 10px;
+  }
+}

@@ -46,7 +46,7 @@ export const Lesson = () => {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        }
+        },
       );
 
       const data = response.data;
@@ -76,7 +76,7 @@ export const Lesson = () => {
               headers: {
                 Authorization: `Bearer ${token}`,
               },
-            }
+            },
           );
 
           if (!response.ok) throw new Error("Video yuklanmadi");
@@ -141,7 +141,7 @@ export const Lesson = () => {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        }
+        },
       );
 
       alert("Lessons muvaffaqiyatli qo‘shildi");
@@ -186,23 +186,32 @@ export const Lesson = () => {
       {showForm && (
         <div className="lesson-form">
           <h3>Create Lessons</h3>
+          <div className="lesson-form-actions">
+            <button
+              className="secondary-btn"
+              onClick={() => {
+                setShowForm(false);
+                setModels([{ file: null, title: "", description: "" }]);
+              }}
+            >
+              ✕ Cancel
+            </button>
+
+      
+          </div>
 
           {models.map((model, index) => (
             <div key={index} className="lesson-form-item">
               <input
                 type="file"
-                onChange={(e) =>
-                  handleChange(index, "file", e.target.files[0])
-                }
+                onChange={(e) => handleChange(index, "file", e.target.files[0])}
               />
 
               <input
                 type="text"
                 placeholder="Title"
                 value={model.title}
-                onChange={(e) =>
-                  handleChange(index, "title", e.target.value)
-                }
+                onChange={(e) => handleChange(index, "title", e.target.value)}
               />
 
               <textarea
@@ -243,10 +252,7 @@ export const Lesson = () => {
       {showVideo && activeLessonId && (
         <div className="video-modal">
           <div className="video-box">
-            <button
-              className="video-close"
-              onClick={() => setShowVideo(false)}
-            >
+            <button className="video-close" onClick={() => setShowVideo(false)}>
               ✕
             </button>
 
@@ -266,6 +272,5 @@ export const Lesson = () => {
     </div>
   );
 };
-
 
 /** */
