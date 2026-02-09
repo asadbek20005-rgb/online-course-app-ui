@@ -1,38 +1,52 @@
-import React, { useState } from 'react';
-import './Login.css';
+import React, { useState } from "react";
+import { jwtDecode } from "jwt-decode";
+import { useNavigate } from "react-router-dom";
+
+import "./Login.css";
 
 export const Login = () => {
-  const [identifier, setIdentifier] = useState('');
-  const [password, setPassword] = useState('');
-  const [message, setMessage] = useState('');
-
+  const [identifier, setIdentifier] = useState("");
+  const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  try {
-    const response = await fetch('https://localhost:7265/api/public/Auth/Login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': '*/*',
-      },
-      body: JSON.stringify({ identifier, password }),
-    });
+    try {
+      const response = await fetch(
+        "https://localhost:7265/api/public/Auth/Login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "*/*",
+          },
+          body: JSON.stringify({ identifier, password }),
+        },
+      );
 
-    const data = await response.json();
+      const data = await response.json();
 
-    if (response.ok) {
-      localStorage.setItem('accessToken', data.accessToken);
-      localStorage.setItem('refreshToken', data.refreshToken);
+      if (response.ok) {
+        localStorage.setItem("accessToken", data.accessToken);
+        localStorage.setItem("refreshToken", data.refreshToken);
 
-      setMessage('Login successful!');
-    } else {
-      setMessage(data.message || 'Login failed!');
+        const token = localStorage.getItem("accessToken");
+
+        const decodedToken = jwtDecode(token);
+        const roleId = decodedToken["role_id"];
+        if (roleId === "2") {
+          navigate("/admin");
+        }else if(roleId === "3"){
+          navigate('/instructor')
+        }
+      } else {
+        setMessage(data.message || "Login failed!");
+      }
+    } catch (error) {
+      setMessage("Error: " + error.message);
     }
-  } catch (error) {
-    setMessage('Error: ' + error.message);
-  }
-};
+  };
 
   return (
     <div className="login-container">
@@ -58,6 +72,3 @@ export const Login = () => {
     </div>
   );
 };
-
-/** Response model: public record TokenDto(string accessToken, string refreshToken);
-  Local storage ga save qilish kerak*/
