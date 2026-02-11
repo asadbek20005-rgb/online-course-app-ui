@@ -1,49 +1,85 @@
+/* ===== CONTAINER ===== */
 .login-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background-color: #f0f2f5;
+  min-height: 100vh;
+  padding: 1rem;
+  background: linear-gradient(135deg, #74ebd5, #ACB6E5); /* gradient fon */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* ===== LOGIN FORM ===== */
 .login-form {
-  background-color: #fff;
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-  width: 300px;
+  background-color: #ffffffcc; /* ozgina shaffoflik */
+  padding: 2.5rem 2rem;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  width: 100%;
+  max-width: 350px;
   text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.login-form:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 35px rgba(0,0,0,0.3);
+}
+
+/* ===== HEADER ===== */
 .login-form h2 {
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
   color: #333;
+  font-weight: 600;
+  font-size: 1.8rem;
 }
 
+/* ===== INPUT FIELDS ===== */
 .login-form input {
   width: 100%;
-  padding: 0.75rem;
+  padding: 0.85rem 1rem;
   margin-bottom: 1rem;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
 }
 
+.login-form input:focus {
+  border-color: #4caf50;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+  outline: none;
+}
+
+/* ===== BUTTON ===== */
 .login-form button {
   width: 100%;
-  padding: 0.75rem;
+  padding: 0.85rem;
   background-color: #4caf50;
   color: #fff;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
   font-size: 1rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .login-form button:hover {
   background-color: #45a049;
+  transform: translateY(-2px);
 }
 
+/* ===== MESSAGE ===== */
 .message {
   margin-bottom: 1rem;
-  color: red;
+  color: #e53935;
+  font-weight: 500;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 400px) {
+  .login-form {
+    padding: 2rem 1.5rem;
+  }
 }

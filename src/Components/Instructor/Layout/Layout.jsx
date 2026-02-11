@@ -40,3 +40,5 @@ export const Layout = () => {
     </div>
   );
 };
+
+/** token olish va role id tekshirish kere */

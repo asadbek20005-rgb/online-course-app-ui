@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { jwtDecode } from "jwt-decode";
-import { useNavigate } from "react-router-dom";
+import {jwtDecode} from "jwt-decode"; // import tuzatildi
+import { useNavigate, Link } from "react-router-dom";
 
 import "./Login.css";
 
@@ -9,6 +9,7 @@ export const Login = () => {
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -22,7 +23,7 @@ export const Login = () => {
             Accept: "*/*",
           },
           body: JSON.stringify({ identifier, password }),
-        },
+        }
       );
 
       const data = await response.json();
@@ -37,8 +38,10 @@ export const Login = () => {
         const roleId = decodedToken["role_id"];
         if (roleId === "2") {
           navigate("/admin");
-        }else if(roleId === "3"){
-          navigate('/instructor')
+        } else if (roleId === "3") {
+          navigate("/instructor");
+        } else if (roleId === "4") {
+          navigate("/student");
         }
       } else {
         setMessage(data.message || "Login failed!");
@@ -55,7 +58,7 @@ export const Login = () => {
         {message && <p className="message">{message}</p>}
         <input
           type="text"
-          placeholder="Identifier"
+          placeholder="Email or Username"
           value={identifier}
           onChange={(e) => setIdentifier(e.target.value)}
           required
@@ -68,6 +71,10 @@ export const Login = () => {
           required
         />
         <button type="submit">Login</button>
+        {/* Register link qo‘shildi */}
+        <p className="register-link">
+          Don't have an account? <Link to="/register">Register here</Link>
+        </p>
       </form>
     </div>
   );

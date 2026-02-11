@@ -1,0 +1,249 @@
+/* ===== ROOT PAGE ===== */
+.course-page {
+  font-family: Inter, "Segoe UI", sans-serif;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #e0e7ff, #f8fafc 60%);
+}
+
+/* ===== HERO (MINIMAL + MODERN) ===== */
+.course-hero {
+  position: relative;
+  padding: 120px 20px 140px;
+  background: linear-gradient(135deg, #6366f1, #3b82f6);
+  color: #fff;
+  background-size: cover;
+  background-position: center;
+}
+
+.course-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("https://www.transparenttextures.com/patterns/cubes.png");
+  opacity: 0.12;
+}
+
+.course-hero .overlay {
+  position: relative;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.course-hero h1 {
+  font-size: 52px;
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 18px;
+}
+
+.course-hero p {
+  font-size: 20px;
+  max-width: 700px;
+  opacity: 0.95;
+}
+
+/* ===== BODY ===== */
+.course-body {
+  max-width: 1200px;
+  margin: -90px auto 0;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 32px;
+}
+
+/* ===== MAIN CONTENT ===== */
+.course-main {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(14px);
+  border-radius: 22px;
+  padding: 44px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.08);
+}
+
+.course-main h2 {
+  font-size: 28px;
+  margin-bottom: 14px;
+}
+
+.course-main h2::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, #6366f1, transparent);
+  margin-top: 14px;
+}
+
+.curriculum {
+  margin-top: 24px;
+  font-size: 16px;
+  line-height: 1.9;
+  color: #374151;
+}
+
+/* ===== SIDE CARD ===== */
+.course-side {
+  position: sticky;
+  top: 24px;
+}
+
+.course-side .info-box {
+  background: #0f172a;
+  color: #e5e7eb;
+  border-radius: 22px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  box-shadow: 0 25px 50px rgba(15, 23, 42, 0.4);
+}
+
+.course-side p {
+  font-size: 15px;
+}
+
+.course-side p b {
+  color: #fff;
+}
+
+/* ===== CTA BUTTON (NEW STYLE) ===== */
+.enroll-btn {
+  margin-top: 18px;
+  padding: 16px;
+  border-radius: 16px;
+  border: none;
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+  color: #0f172a;
+  background: linear-gradient(135deg, #facc15, #fde047);
+  transition: all 0.25s ease;
+}
+
+.enroll-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 35px rgba(250, 204, 21, 0.45);
+}
+
+.enroll-btn:active {
+  transform: scale(0.96);
+}
+
+/* ===== STATES ===== */
+.loader,
+.error {
+  padding: 100px;
+  text-align: center;
+  font-size: 22px;
+  color: #334155;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .course-hero {
+    padding: 80px 20px 120px;
+  }
+
+  .course-hero h1 {
+    font-size: 36px;
+  }
+
+  .course-body {
+    grid-template-columns: 1fr;
+    margin-top: -60px;
+  }
+
+  .course-main {
+    padding: 32px;
+  }
+}
+
+
+.instructor-section {
+  margin-top: 40px;
+}
+
+.instructor-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* ===== Instructor Card ===== */
+.instructor-card {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  padding: 20px;
+  gap: 20px;
+}
+
+.instructor-photo-wrapper {
+  flex: 0 0 140px;
+}
+
+.instructor-photo {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ddd;
+}
+
+.instructor-photo-placeholder {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background-color: #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
+.instructor-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.instructor-info h3 {
+  margin: 0;
+  font-size: 1.4rem;
+  color: #222;
+}
+
+.instructor-info p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.instructor-info .bio {
+  max-height: 120px;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.instructor-info .timestamps {
+  margin-top: 10px;
+  font-size: 0.85rem;
+  color: #777;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .instructor-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .instructor-info .bio {
+    max-height: none;
+  }
+}
